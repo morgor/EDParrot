@@ -29,6 +29,9 @@ import time
 import json
 import pathlib
 import gtts
+import glob
+import os
+import getpass
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from playsound import playsound
@@ -90,10 +93,13 @@ class Event(LoggingEventHandler):
             logFile.close()
         
 
-if __name__ == "__main__": 
-    path = "C:\\Users\\test\\Saved Games\\Frontier Developments\\Elite Dangerous"
-    path2 = path + "\\Journal.220116181554.01.log"
-
+if __name__ == "__main__":
+    list_of_files = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous\\Journal.*")
+    latestJournal = max(list_of_files,key=os.path.getmtime)
+    path = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous")[0]
+    path2 = latestJournal
+    print(path2)
+    
     logFile = open(path2,"r", encoding="utf-8")
     nLine = 0
     for line in logFile.readlines():
