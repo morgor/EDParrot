@@ -94,11 +94,11 @@ class Event(LoggingEventHandler):
         
 
 if __name__ == "__main__":
-    list_of_files = glob.glob(f"C:\\Python\\EDParrot-example-log\\Journal.*")
-#    list_of_files = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous\\Journal.*")
+#    list_of_files = glob.glob(f"C:\\Python\\EDParrot-example-log\\Journal.*")
+    list_of_files = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous\\Journal.*")
     latestJournal = max(list_of_files,key=os.path.getmtime)
-    path = glob.glob(f"C:\\Python\\EDParrot-example-log")[0]
-#    path = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous")[0]
+#    path = glob.glob(f"C:\\Python\\EDParrot-example-log")[0]
+    path = glob.glob(f"C:\\Users\\{getpass.getuser()}\\Saved Games\\Frontier Developments\\Elite Dangerous")[0]
     path2 = latestJournal
     print(path2)
     
