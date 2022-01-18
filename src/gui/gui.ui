@@ -1,0 +1,1554 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="tk.Toplevel" id="windowMain">
+    <property name="background">#ff8000</property>
+    <property name="height">200</property>
+    <property name="iconphoto">parrot_32.png</property>
+    <property name="padx">5</property>
+    <property name="pady">5</property>
+    <property name="title" translatable="yes">EDParrot</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="frame1">
+        <property name="borderwidth">5</property>
+        <property name="height">200</property>
+        <property name="padding">0</property>
+        <property name="relief">ridge</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="frame2">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="expand">false</property>
+              <property name="fill">x</property>
+              <property name="propagate">True</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="button5">
+                <property name="command" type="command" cbtype="simple">buttonStart</property>
+                <property name="text" translatable="yes">START</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button6">
+                <property name="command" type="command" cbtype="simple">buttonRestart</property>
+                <property name="text" translatable="yes">RESTART</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button7">
+                <property name="command" type="command" cbtype="simple">buttonStop</property>
+                <property name="text" translatable="yes">STOP</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Separator" id="separator10">
+                <property name="orient">horizontal</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button8">
+                <property name="command" type="command" cbtype="simple">buttonViewer</property>
+                <property name="text" translatable="yes">LOG VIEWER</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button9">
+                <property name="command" type="command" cbtype="simple">buttonconfigure</property>
+                <property name="text" translatable="yes">CONFIGURE</property>
+                <layout manager="pack">
+                  <property name="propagate">True</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Text" id="text2">
+            <property name="background">#000000</property>
+            <property name="font">{Courier New} 14 {}</property>
+            <property name="foreground">#ff8000</property>
+            <property name="height">10</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">Example text...</property>
+            <property name="undo">false</property>
+            <property name="width">80</property>
+            <property name="wrap">word</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Scrollbar" id="scrollbar1">
+            <property name="orient">vertical</property>
+            <layout manager="pack">
+              <property name="expand">false</property>
+              <property name="fill">y</property>
+              <property name="propagate">True</property>
+              <property name="side">right</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="tk.Toplevel" id="windowViewer">
+    <property name="background">#ff8000</property>
+    <property name="height">200</property>
+    <property name="iconphoto">parrot_32.png</property>
+    <property name="padx">5</property>
+    <property name="pady">5</property>
+    <property name="title" translatable="yes">Log viewer</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="frame10">
+        <property name="height">200</property>
+        <property name="padding">10 5 10 0</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="expand">false</property>
+          <property name="fill">y</property>
+          <property name="propagate">True</property>
+          <property name="side">left</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="label33">
+            <property name="font">{Arial} 12 {bold underline}</property>
+            <property name="padding">0 5 0 5</property>
+            <property name="text" translatable="yes">FILTERS</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton24">
+            <property name="text" translatable="yes">SendTxt</property>
+            <property name="variable">boolean:FilterSendTxt</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label34">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="text" translatable="yes">Message</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton25">
+            <property name="text" translatable="yes">FRIEND</property>
+            <property name="variable">boolean:FilterMsgFriend</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton26">
+            <property name="text" translatable="yes">LOCAL</property>
+            <property name="variable">boolean:FilterMsgLocal</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton27">
+            <property name="text" translatable="yes">NPC</property>
+            <property name="variable">boolean:FilterMsgNPC</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton28">
+            <property name="text" translatable="yes">PLAYER</property>
+            <property name="variable">boolean:FilterMsgPlayer</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">6</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton29">
+            <property name="text" translatable="yes">SQUADRON</property>
+            <property name="variable">boolean:FilterMsgSquadron</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">7</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton30">
+            <property name="text" translatable="yes">STARSYSTEM</property>
+            <property name="variable">boolean:FilterMsgStarsystem</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">8</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton31">
+            <property name="text" translatable="yes">VOICECHAT</property>
+            <property name="variable">boolean:FilterMsgVoicechat</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">9</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton32">
+            <property name="text" translatable="yes">WING</property>
+            <property name="variable">boolean:FilterMsgWing</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">10</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label35">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="text" translatable="yes">Friends</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">11</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton33">
+            <property name="text" translatable="yes">ADDED</property>
+            <property name="variable">boolean:FilterFriendAdded</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">12</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton34">
+            <property name="text" translatable="yes">DECLINED</property>
+            <property name="variable">boolean:FilterFriendDeclined</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">13</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton35">
+            <property name="text" translatable="yes">LOST</property>
+            <property name="variable">boolean:FilterFriendLost</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">14</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton36">
+            <property name="text" translatable="yes">OFFLINE</property>
+            <property name="variable">boolean:FilterFriendOffline</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">15</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton37">
+            <property name="text" translatable="yes">ONLINE</property>
+            <property name="variable">boolean:FilterFriendOnline</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">16</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbutton38">
+            <property name="text" translatable="yes">REQUESTED</property>
+            <property name="variable">boolean:FilterFriendRequested</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">17</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label36">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="text" translatable="yes">Date</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">18</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame7">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">19</property>
+            </layout>
+            <child>
+              <object class="ttk.Entry" id="entry2">
+                <property name="textvariable">string:FilterDate</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button4">
+                <property name="command" type="command" cbtype="simple">buttonSelectDate</property>
+                <property name="text" translatable="yes">S</property>
+                <property name="width">2</property>
+                <layout manager="pack">
+                  <property name="expand">false</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame8">
+            <property name="height">200</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="width">200</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">20</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label31">
+                <property name="padding">0 0 5 0</property>
+                <property name="text" translatable="yes">DAYS IN THE PAST</property>
+                <layout manager="pack">
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Spinbox" id="spinbox1">
+                <property name="from_">0</property>
+                <property name="increment">1</property>
+                <property name="text" translatable="yes">7</property>
+                <property name="textvariable">int:FilterDateDays</property>
+                <property name="to">64</property>
+                <property name="width">2</property>
+                <property name="wrap">true</property>
+                <layout manager="pack">
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame4">
+            <property name="height">200</property>
+            <property name="padding">0 20 0 0</property>
+            <property name="width">200</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">21</property>
+              <property name="sticky">s</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="button3">
+                <property name="command" type="command" cbtype="simple">buttonSaveTxt</property>
+                <property name="text" translatable="yes">SAVE AS TEXT</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button2">
+                <property name="command" type="command" cbtype="simple">buttonRefresh</property>
+                <property name="text" translatable="yes">REFRESH</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="ipadx">35</property>
+                  <property name="ipady">5</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="side">bottom</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="frame9">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="propagate">True</property>
+          <property name="side">left</property>
+        </layout>
+        <child>
+          <object class="tk.Text" id="text1">
+            <property name="background">#000000</property>
+            <property name="font">{Courier New} 14 {}</property>
+            <property name="foreground">#ff8000</property>
+            <property name="height">10</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">Example text...</property>
+            <property name="undo">false</property>
+            <property name="width">80</property>
+            <property name="wrap">word</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Scrollbar" id="scrollbar2">
+            <property name="orient">vertical</property>
+            <layout manager="pack">
+              <property name="expand">false</property>
+              <property name="fill">y</property>
+              <property name="propagate">True</property>
+              <property name="side">right</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="tk.Toplevel" id="windowConfig">
+    <property name="background">#ff8000</property>
+    <property name="iconphoto">parrot_32.png</property>
+    <property name="padx">5</property>
+    <property name="pady">5</property>
+    <property name="resizable">none</property>
+    <property name="title" translatable="yes">Configuration</property>
+    <child>
+      <object class="ttk.Labelframe" id="labelframe1">
+        <property name="borderwidth">5</property>
+        <property name="padding">10 0 10 15</property>
+        <property name="text" translatable="yes">Configure messages behavior</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">left</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="label1">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="text" translatable="yes">Message</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label2">
+            <property name="text" translatable="yes">FRIEND</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label3">
+            <property name="text" translatable="yes">LOCAL</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label4">
+            <property name="text" translatable="yes">NPC</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label5">
+            <property name="text" translatable="yes">PLAYER</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label6">
+            <property name="text" translatable="yes">SQUADRON</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">6</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label7">
+            <property name="text" translatable="yes">STARSYSTEM</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">7</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label8">
+            <property name="text" translatable="yes">VOICECHAT</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">8</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label19">
+            <property name="text" translatable="yes">WING</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">9</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label9">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">0 5 0 0</property>
+            <property name="text" translatable="yes">Friends</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">10</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label10">
+            <property name="text" translatable="yes">ADDED</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">11</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label11">
+            <property name="text" translatable="yes">DECLINED</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">12</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label12">
+            <property name="text" translatable="yes">LOST</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">13</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label13">
+            <property name="text" translatable="yes">OFFLINE</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">14</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label14">
+            <property name="text" translatable="yes">ONLINE</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">15</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label15">
+            <property name="text" translatable="yes">REQUESTED</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">16</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label16">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">5 5 0 0</property>
+            <property name="text" translatable="yes">Play sound</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsFriend">
+            <property name="value">snd5</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsLocal">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsNPC">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsPlayer">
+            <property name="value">snd2</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsSquadron">
+            <property name="value">snd5</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">6</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsStarsystem">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">7</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsVoicechat">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">8</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuPsWing">
+            <property name="value">snd5</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">9</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu9">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">11</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu10">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">12</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu11">
+            <property name="value">snd9</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">13</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu12">
+            <property name="value">snd8</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">14</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu13">
+            <property name="value">snd7</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">15</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu14">
+            <property name="value">snd11</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">16</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label17">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">5 5 0 0</property>
+            <property name="text" translatable="yes">Txt2Speach</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sFriend">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sLocal">
+            <property name="value">en</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sNPC">
+            <property name="value">en</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sPlayer">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sSquadron">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">6</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sStarsystem">
+            <property name="value">en</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">7</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sVoicechat">
+            <property name="value">silent</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">8</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenuT2sWing">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">9</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu24">
+            <property name="value">silent</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">11</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu25">
+            <property name="value">silent</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">12</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu26">
+            <property name="value">silent</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">13</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu27">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">14</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu28">
+            <property name="value">pl</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">15</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu29">
+            <property name="value">silent</property>
+            <property name="values">silent,pl,en</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">16</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label18">
+            <property name="font">{Arial} 12 {bold}</property>
+            <property name="padding">5 5 0 0</property>
+            <property name="text" translatable="yes">Translate</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFriend">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFriend</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrLocal">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrLocal</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrNPC">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrNPC</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrPlayer">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrPlayer</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrSquadron">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrSquadron</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">6</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrStarsystem">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrStarsystem</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">7</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrVoicechat">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrVoicechat</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">8</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrWing">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrWing</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">9</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrAdd">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrAdd</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">11</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrDecline">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrDecline</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">12</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrLost">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrLost</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">13</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrOffiline">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrOffiline</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">14</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrOnline">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrOnline</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">15</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonTrFrRequest">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:TrFrRequest</property>
+            <layout manager="grid">
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">16</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="labelframe2">
+        <property name="borderwidth">5</property>
+        <property name="padding">10 0 10 15</property>
+        <property name="text" translatable="yes">Other configuration</property>
+        <layout manager="pack">
+          <property name="fill">x</property>
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="label20">
+            <property name="text" translatable="yes">Print messages</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label21">
+            <property name="text" translatable="yes">Txt2Speach engine</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label22">
+            <property name="text" translatable="yes">Txt2Speach scheme</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label23">
+            <property name="text" translatable="yes">Key word alarm</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label28">
+            <property name="text" translatable="yes">Default size for message window</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label29">
+            <property name="text" translatable="yes">Always on top</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonPrintMsg">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:PrintMsg</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu30">
+            <property name="value">GoogleTranslator</property>
+            <property name="values">GoogleTranslator,DeepL</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu31">
+            <property name="value">nick-message</property>
+            <property name="values">nick-message,message,nick</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entry1">
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu36">
+            <property name="value">normal</property>
+            <property name="values">mini,normal,max</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="checkbuttonAOTop">
+            <property name="offvalue">-1</property>
+            <property name="onvalue">1</property>
+            <property name="variable">boolean:AOTop</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.OptionMenu" id="optionmenu32">
+            <property name="value">silent</property>
+            <property name="values">silent,snd1,snd2,snd3,snd4,snd5,snd6,snd7,snd8,snd9,snd10,snd11,snd12</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="padx">10</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="labelframe3">
+        <property name="borderwidth">5</property>
+        <property name="padding">10 0 10 5</property>
+        <property name="text" translatable="yes">Load and save</property>
+        <layout manager="pack">
+          <property name="fill">x</property>
+          <property name="side">bottom</property>
+        </layout>
+        <child>
+          <object class="ttk.Button" id="button10">
+            <property name="command" type="command" cbtype="simple">buttonLoadConfig</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">LOAD CONFIG</property>
+            <layout manager="pack">
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="button11">
+            <property name="command" type="command" cbtype="simple">buttonSaveConfig</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">SAVE CONFIG</property>
+            <layout manager="pack">
+              <property name="propagate">True</property>
+              <property name="side">left</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="button12">
+            <property name="command" type="command" cbtype="simple">buttonLoadDefaultConfig</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">LOAD DEFAULD CONFIG</property>
+            <layout manager="pack">
+              <property name="propagate">True</property>
+              <property name="side">right</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="button13">
+            <property name="command" type="command" cbtype="simple">buttonSaveDefaultConfig</property>
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">SAVE DEFAULD CONFIG</property>
+            <layout manager="pack">
+              <property name="propagate">True</property>
+              <property name="side">right</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button14">
+        <property name="compound">top</property>
+        <property name="default">disabled</property>
+        <property name="image">parrot.png</property>
+        <property name="style">Toolbutton</property>
+        <property name="takefocus">false</property>
+        <property name="text" translatable="yes">EDParrot 0.22</property>
+        <layout manager="pack">
+          <property name="expand">true</property>
+          <property name="propagate">True</property>
+          <property name="side">bottom</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+  <object class="tk.Toplevel" id="windowDateSelector">
+    <property name="height">200</property>
+    <property name="iconphoto">parrot_32.png</property>
+    <property name="title" translatable="yes">Select date</property>
+    <property name="width">200</property>
+    <child>
+      <object class="pygubu.builder.widgets.calendarframe" id="calendarframe1">
+        <property name="firstweekday">6</property>
+        <property name="month">1</property>
+        <layout manager="pack">
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="button1">
+        <property name="command" type="command" cbtype="simple">buttonSelectDate</property>
+        <property name="text" translatable="yes">SELECT</property>
+        <layout manager="pack">
+          <property name="fill">x</property>
+          <property name="propagate">True</property>
+          <property name="side">top</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
