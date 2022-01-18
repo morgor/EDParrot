@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Built files
-          path: dist\edparot.exe
+          path: D:\a\EDParrot\EDParrot\dist\edparrot.exe
 
   release:
     name: Release new version
