@@ -1,0 +1,63 @@
+name: Build EDParot for Windows
+
+on:
+  push:
+    tags:
+      - "Release/*"
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Build EDMC
+    runs-on: windows-2019
+
+    defaults:
+      run:
+        shell: powershell
+
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-python@v2.3.0
+        with:
+          python-version: "3.9.9"
+          architecture: "x86"
+
+      - name: Install python tools
+        run: |
+          pip install wheel
+          pip install -r requirements-dev.txt
+      - name: Build EDParot
+        run: |
+          python setup.py py2exe
+      - name: Upload build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: Built files
+          path: EDParot_win*.msi
+
+  release:
+    name: Release new version
+    runs-on: ubuntu-latest
+    needs: test
+    if: "${{ github.event_name != 'workflow_dispatch' }}"
+
+    steps:
+      - name: Download binary
+        uses: actions/download-artifact@v2
+        with:
+          name: Built files
+          path: ./
+          
+      - name: Hash files
+        run: sha256sum EDParot_win*.msi > ./hashes.sum
+
+      - name: Create Draft Release
+        uses: "softprops/action-gh-release@v1"
+        with:
+          token: "${{secrets.GITHUB_TOKEN}}"
+          draft: true
+          prerelease: true
+          discussion_category_name: "Announcement"
+          files: |
+            ./EDPArot_win*.msi
+            ./hashes.sum
