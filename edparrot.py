@@ -48,7 +48,7 @@ def say(sayTxt, xLang):
 
 def snd(sndNr):
     snd = pathApp + '\snd' + sndNr + '.wav'
-    playsound(snd)
+    #playsound(snd)
 
 class Event(LoggingEventHandler):
     def on_modified(self, event):
