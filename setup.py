@@ -17,10 +17,6 @@ from os.path import exists, isdir, join
 from tempfile import gettempdir
 from typing import Any, Generator, Set
 
-from config import (
-    appcmdname, applongname, appname, appversion, appversion_nobuild, copyright, git_shorthash_from_head, update_feed,
-    update_interval
-)
 from constants import GITVERSION_FILE
 
 if sys.version_info[0:2] != (3, 9):
