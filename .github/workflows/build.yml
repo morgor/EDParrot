@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build EDParot
         run: |
-          python setup.py py2exe
+          pyinstaller --onefile edparrot.py
       - name: Upload build files
         uses: actions/upload-artifact@v2
         with:
