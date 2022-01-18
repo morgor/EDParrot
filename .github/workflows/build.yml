@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Built files
-          path: EDParot.exe
+          path: dist/edparot.exe
 
   release:
     name: Release new version
@@ -49,7 +49,7 @@ jobs:
           path: ./
           
       - name: Hash files
-        run: sha256sum EDParot.exe > ./hashes.sum
+        run: sha256sum edparot.exe > ./hashes.sum
 
       - name: Create Draft Release
         uses: "softprops/action-gh-release@v1"
@@ -59,5 +59,5 @@ jobs:
           prerelease: true
           discussion_category_name: "Announcement"
           files: |
-            ./EDParot.exe
+            ./edparot.exe
             ./hashes.sum
