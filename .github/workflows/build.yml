@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Build EDMC
+    name: Build EDParot
     runs-on: windows-2019
 
     defaults:
@@ -25,7 +25,7 @@ jobs:
       - name: Install python tools
         run: |
           pip install wheel
-          pip install -r requirements-dev.txt
+          pip install -r requirements.txt
       - name: Build EDParot
         run: |
           python setup.py py2exe
