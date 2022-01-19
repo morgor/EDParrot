@@ -33,6 +33,7 @@ def print_file_name(path,filesize):
     Prints file name of file from path given and if filesize is true then will print the total size of the file in bytes
     """
     print(os.path.basename(path))
+    print('ello..:-)')
     if filesize:
         print(f"File size: {os.path.getsize(path)} bytes")
 
